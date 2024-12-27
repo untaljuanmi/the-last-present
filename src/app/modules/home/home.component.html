@@ -1,0 +1,81 @@
+@if (page() === 1) {
+  <div
+    class="flex flex-col justify-between items-center p-8 h-dvh w-dvw bg-indigo-900 overflow-hidden text-white">
+    <div class="flex flex-col justify-center items-center gap-8">
+      <h1 class="text-6xl font-bold text-center">El último regalo</h1>
+      <p class="text-2xl text-center">
+        Ya solo queda un regalo por abrir, pero si quieres encontrarlo deberás resolver un pequeño
+        acertijo.
+      </p>
+    </div>
+
+    <img src="/images/present.png" alt="Regalo" class="animate-bounce" />
+
+    <button
+      class="flex justify-center items-center gap-2 text-2xl text-indigo-900 bg-teal-500 border-2 border-teal-500 active:bg-teal-700 transition-all py-4 px-8 w-full rounded-2xl"
+      (click)="onClickGoToNextPage()">
+      Comenzar
+    </button>
+  </div>
+} @else if (page() === 2) {
+  <div
+    class="flex flex-col justify-between items-center p-8 h-dvh w-dvw bg-indigo-900 overflow-hidden text-white">
+    <div class="flex w-full">
+      <button
+        class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-auto rounded-2xl"
+        (click)="onClickGoToPreviousPage()">
+        Atrás
+      </button>
+    </div>
+
+    <div class="flex flex-col justify-center items-center flex-1 gap-8">
+      <p class="text-xl text-center">
+        Si quieres saber dónde se encuentra tu regalo tendrás que adivinar la palabra mágica
+      </p>
+
+      <p class="text-xl text-center">
+        Para ello deberás responder a una serie de preguntas y así conseguir pistas que te ayudarán
+        a resolver el enigma
+      </p>
+    </div>
+
+    <button
+      class="flex justify-center items-center gap-2 text-2xl text-indigo-900 bg-teal-500 border-2 border-teal-500 active:bg-teal-700 transition-all py-4 px-8 w-full rounded-2xl"
+      (click)="onClickGoToNextPage()">
+      ¡Entendido!
+    </button>
+  </div>
+} @else if (page() === 3) {
+  <div
+    class="flex flex-col justify-between items-center p-8 h-dvh w-dvw bg-indigo-900 overflow-hidden text-white">
+    <div class="flex w-full">
+      <button
+        class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-auto rounded-2xl"
+        (click)="onClickGoToPreviousPage()">
+        Atrás
+      </button>
+    </div>
+
+    <div class="flex flex-col justify-center items-center flex-1 gap-8 w-full">
+      <input
+        #answer
+        type="text"
+        placeholder="Tu respuesta, aquí"
+        class="w-full border-2 border-teal-500 bg-transparent rounded-2xl py-4 px-8 text-2xl text-center outline-none" />
+    </div>
+
+    <div class="flex flex-col justify-center items-center gap-8 w-full">
+      <button
+        class="flex justify-center items-center gap-2 text-2xl text-indigo-900 bg-teal-500 border-2 border-teal-500 active:bg-teal-700 transition-all py-4 px-8 w-full rounded-2xl"
+        (click)="onClickSolve(answer.value)">
+        ¡Resolver!
+      </button>
+
+      <button
+        class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-full rounded-2xl"
+        (click)="onClickGetClue()">
+        ¡Pista!
+      </button>
+    </div>
+  </div>
+}
