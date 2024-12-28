@@ -1,0 +1,94 @@
+<div
+  class="flex flex-col justify-between items-center gap-8 p-8 h-dvh w-dvw bg-indigo-900 overflow-hidden text-white">
+  <div class="flex w-full">
+    <button
+      class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-auto rounded-2xl"
+      routerLink="/home">
+      Atrás
+    </button>
+  </div>
+
+  <div class="flex flex-col justify-center items-center flex-1 gap-8 w-full">
+    @for (clue of clues(); track clue.id) {
+      <div
+        routerLink="/clue/{{ clue.id }}"
+        class="relative flex flex-col justify-center items-center flex-1 w-full rounded-2xl border-2 border-teal-500 p-4 overflow-hidden {{
+          clue.solved ? 'bg-teal-500' : 'bg-transparent'
+        }}">
+        @if (!clue.solved) {
+          <div
+            class="flex flex-col justify-center items-center flex-1 gap-2 w-full absolute -rotate-45 opacity-20 text-teal-500">
+            <div class="flex gap-6 text-xs">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xs">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-sm">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-md">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-lg">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xl">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-2xl">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xl">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-lg">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-md">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-sm">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xs">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xs">
+              @for (item of [].constructor(20); track $index) {
+                <span>?</span>
+              }
+            </div>
+          </div>
+        }
+        <div class="flex flex-col justify-center items-center flex-1 w-full">
+          <span class="text-2xl">{{ clue.title }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

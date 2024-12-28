@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, Signal, signal, WritableSignal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'tlp-home',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,8 +38,6 @@ export default class HomeComponent {
     }
     console.log(' -> ¡Bien!');
   }
-
-  public onClickGetClue(): void {}
 
   private savePageInLocalStorage(page: number): void {
     localStorage.setItem('the-last-present-page', page.toString());

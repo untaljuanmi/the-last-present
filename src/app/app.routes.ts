@@ -6,6 +6,14 @@ export const routes: Routes = [
     loadComponent: () => import('./modules/home/home.component'),
   },
   {
+    path: 'clues',
+    loadComponent: () => import('./modules/clues/clues.component'),
+  },
+  {
+    path: 'clue/:id',
+    loadComponent: () => import('./modules/clue/clue.component'),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
