@@ -47,6 +47,7 @@ module.exports = tseslint.config(
           argsIgnorePattern: '^_',
         },
       ],
+      '@typescript-eslint/no-inferrable-types': 'off',
       'prefer-const': 'warn',
       'no-constant-binary-expression': 'error',
       '@typescript-eslint/no-unused-vars': 'off',

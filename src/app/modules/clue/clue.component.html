@@ -10,12 +10,93 @@
 
   <div class="flex flex-col justify-center items-center flex-1 gap-8 w-full">
     @if (clue()) {
-      <h2>{{ clue()?.title }}</h2>
-      <button
-        class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-auto rounded-2xl"
-        (click)="clue()!.solved = true">
-        Resolver
-      </button>
+      @if (question()) {
+        <p>Pregunta {{ question()?.id }} de 5</p>
+        <div class="flex flex-col justify-center items-center gap-8 w-full">
+          <p class="text-xl text-center">{{ question()?.question }}</p>
+        </div>
+        <div class="flex flex-col justify-center items-center gap-4 w-full">
+          @for (option of question()?.options; track option.id) {
+            <button
+              [disabled]="!!question()?.answer"
+              class="flex justify-center items-center gap-2 text-2xl bg-transparent border-2 transition-all py-4 px-8 rounded-2xl w-full {{
+                !!question()?.answer
+                  ? option.id === question()?.correctAnswer
+                    ? 'text-teal-500 border-teal-500 active:border-teal-700 active:text-teal-700'
+                    : option.id === question()?.answer
+                      ? 'text-rose-500 border-rose-500 active:border-rose-700 active:text-rose-700'
+                      : 'text-gray-300 border-gray-300 active:border-gray-500 active:text-gray-500'
+                  : 'text-gray-300 border-gray-300 active:border-gray-500 active:text-gray-500'
+              }}"
+              (click)="onClickOption(option)">
+              <div class="flex flex-col justify-center items-center flex-1 w-full">
+                <span class="text-2xl">{{ option.answer }}</span>
+              </div>
+            </button>
+          }
+        </div>
+        <div class="flex justify-between items-center gap-4 w-full">
+          <button
+            [disabled]="question()?.id === '1'"
+            class="flex justify-center items-center gap-2 bg-transparent border-2 transition-all py-4 px-8 rounded-2xl w-full text-teal-500 border-teal-500 active:border-teal-700 active:text-teal-700 disabled:text-gray-400 disabled:border-gray-400"
+            (click)="onClickGoToPreviousQuestion()">
+            <div class="flex flex-col justify-center items-center flex-1 w-full">
+              <span class="text-xl">Anterior</span>
+            </div>
+          </button>
+          <button
+            class="flex justify-center items-center gap-2 bg-transparent border-2 transition-all py-4 px-8 rounded-2xl w-full text-teal-500 border-teal-500 active:border-teal-700 active:text-teal-700 disabled:text-gray-400 disabled:border-gray-400"
+            (click)="onClickGoToNextQuestion()">
+            <div class="flex flex-col justify-center items-center flex-1 w-full">
+              <span class="text-xl">Siguiente</span>
+            </div>
+          </button>
+        </div>
+      } @else {
+        @if (correctAnswers() === 5) {
+          <div class="flex flex-col justify-between flex-1 gap-16">
+            <div class="flex flex-col justify-center flex-1 gap-8">
+              <h2 class="text-4xl text-center">¡Ole tu chocho 👏🏻!</h2>
+              <p class="text-2xl text-center">
+                Has respondido a todas las preguntas correctamente. Aquí tienes tu pista:
+              </p>
+            </div>
+            <div class="flex flex-col justify-center items-center">
+              <img src="/images/{{ clue()!.id }}.png" alt="Pista" />
+            </div>
+          </div>
+        } @else if (correctAnswers() >= 3) {
+          <div class="flex flex-col justify-between gap-16">
+            <div class="flex flex-col justify-center flex-1 gap-8">
+              <h2 class="text-4xl text-center">¡Muy bien!</h2>
+              <p class="text-2xl text-center">
+                Has conseguido responder a la mayoría de las preguntas correctamente. Aquí tienes tu
+                pista:
+              </p>
+            </div>
+            <div class="flex flex-col justify-center items-center">
+              <img
+                src="/images/clues/{{ clue()!.id }}.png"
+                alt="Pista"
+                class="rounded-xl shadow-xl" />
+            </div>
+          </div>
+        } @else {
+          <div class="flex flex-col justify-between flex-1 gap-8">
+            <div class="flex flex-col justify-center flex-1 gap-8">
+              <h2 class="text-4xl text-center">🤨 Vaya pringada...</h2>
+              <p class="text-2xl text-center">Inténtalo de nuevo, anda.</p>
+            </div>
+            <button
+              class="flex justify-center items-center gap-2 bg-transparent border-2 transition-all py-4 px-8 rounded-2xl w-full text-teal-500 border-teal-500 active:border-teal-700 active:text-teal-700"
+              (click)="onClickRestart()">
+              <div class="flex flex-col justify-center items-center flex-1 w-full">
+                <span class="text-xl">Volver a empezar</span>
+              </div>
+            </button>
+          </div>
+        }
+      }
     }
   </div>
 </div>
