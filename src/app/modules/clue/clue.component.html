@@ -61,6 +61,11 @@
                 Has respondido a todas las preguntas correctamente. Aquí tienes tu pista:
               </p>
             </div>
+            <div class="confetti-wrapper">
+              @for (item of [].constructor(10); track $index) {
+                <div class="confetti-piece"></div>
+              }
+            </div>
             <div class="flex flex-col justify-center items-center">
               <img src="/images/{{ clue()!.id }}.png" alt="Pista" />
             </div>
@@ -73,6 +78,11 @@
                 Has conseguido responder a la mayoría de las preguntas correctamente. Aquí tienes tu
                 pista:
               </p>
+            </div>
+            <div class="confetti-wrapper">
+              @for (item of [].constructor(10); track $index) {
+                <div class="confetti-piece"></div>
+              }
             </div>
             <div class="flex flex-col justify-center items-center">
               <img
