@@ -7,8 +7,7 @@
 
 html,
 body {
-  @apply bg-indigo-900 w-dvw h-dvh;
-  margin: 0;
+  @apply bg-indigo-900 w-dvw h-dvh m-0 p-0;
   font-family: 'Poppins', serif;
   font-weight: 400;
   font-style: normal;
