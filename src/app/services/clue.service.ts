@@ -9,6 +9,11 @@ import { ClueModel } from '../models/clue.model';
 export class ClueService {
   public clues: WritableSignal<ClueModel[]> = signal<ClueModel[]>(this.getClues());
 
+  public reset(): void {
+    localStorage.removeItem('the-last-present-clues');
+    this.clues.set(this.buildClues());
+  }
+
   public getClues(): ClueModel[] {
     const clues: string | null = localStorage.getItem('the-last-present-clues');
     return clues ? JSON.parse(clues) : this.buildClues();

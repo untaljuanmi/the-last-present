@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component, Signal, signal, WritableSignal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Signal,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
+
+import { ClueService } from '../../services/clue.service';
 
 @Component({
   selector: 'tlp-home',
@@ -14,6 +23,8 @@ export default class HomeComponent {
 
   public answer: Signal<string> = signal<string>('hans zimmer');
 
+  private _clueService: ClueService = inject(ClueService);
+
   constructor() {
     this.loadPageFromLocalStorage();
   }
@@ -26,6 +37,10 @@ export default class HomeComponent {
   }
 
   public onClickGoToNextPage(): void {
+    if (this.page() === 1) {
+      this._clueService.reset();
+    }
+
     const page: number = this.page() + 1;
     this.page.set(page);
     this.savePageInLocalStorage(page);
