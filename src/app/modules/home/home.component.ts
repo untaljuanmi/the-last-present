@@ -6,7 +6,7 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { ClueService } from '../../services/clue.service';
 
@@ -21,7 +21,10 @@ import { ClueService } from '../../services/clue.service';
 export default class HomeComponent {
   public page: WritableSignal<number> = signal(1);
 
-  public answer: Signal<string> = signal<string>('hans zimmer');
+  public answer: Signal<string> = signal('hans zimmer');
+  public answered: WritableSignal<boolean | null> = signal(null);
+
+  private _router: Router = inject(Router);
 
   private _clueService: ClueService = inject(ClueService);
 
@@ -48,10 +51,11 @@ export default class HomeComponent {
 
   public onClickSolve(answer: string): void {
     if (answer?.toLowerCase()?.trim() !== this.answer()) {
-      console.log(' -> Mal...');
+      this.answered.set(false);
       return;
     }
-    console.log(' -> ¡Bien!');
+    this.answered.set(true);
+    this._router.navigate(['/congratulations']);
   }
 
   private savePageInLocalStorage(page: number): void {

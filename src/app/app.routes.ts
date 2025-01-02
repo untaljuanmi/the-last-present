@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./modules/clue/clue.component'),
   },
   {
+    path: 'congratulations',
+    loadComponent: () => import('./modules/congratulations/congratulations.component'),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
