@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col justify-between items-center gap-8 p-8 h-dvh w-dvw bg-indigo-900 overflow-hidden text-white">
+  class="flex flex-col justify-between items-center gap-8 p-8 h-dvh w-dvw overflow-hidden text-white">
   <div class="flex w-full">
     <button
       class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-auto rounded-2xl"
@@ -84,10 +84,70 @@
               }
             </div>
           </div>
+          <div class="flex flex-col justify-center items-center flex-1 w-full z-10">
+            <span class="text-2xl">{{ clue.title }}</span>
+          </div>
+        } @else {
+          <span class="text-3xl z-10 drop-shadow-md">{{ getClue(clue.id) }}</span>
+          <div
+            class="flex flex-col justify-center items-center flex-1 gap-2 w-full absolute -rotate-45 opacity-50">
+            <div class="flex gap-6 text-xs">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-sm">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-md">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-lg">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xl">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-2xl">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xl">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-lg">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-md">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-sm">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+            <div class="flex gap-6 text-xs">
+              @for (item of [].constructor(20); track $index) {
+                <span>{{ getEmoji(clue.id) }}</span>
+              }
+            </div>
+          </div>
         }
-        <div class="flex flex-col justify-center items-center flex-1 w-full">
-          <span class="text-2xl">{{ clue.title }}</span>
-        </div>
       </div>
     }
   </div>

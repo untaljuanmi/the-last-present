@@ -112,6 +112,56 @@ export default class ClueComponent implements OnInit {
     this.setNextQuestion();
   }
 
+  public getClue(): string {
+    const clue: ClueModel | undefined = this.clue();
+
+    if (!clue) {
+      return '';
+    }
+
+    switch (clue.id) {
+      case '1':
+        return 'A Dark Knight';
+      case '2':
+        return 'Now we are free';
+      case '3':
+        return "You've been called back to Top Gun";
+      case '4':
+        return 'Time';
+      case '5':
+        return 'Skull and crossbones';
+      case '6':
+        return 'Can you feel the love tonight';
+      default:
+        return '';
+    }
+  }
+
+  public getEmoji(): string {
+    const clue: ClueModel | undefined = this.clue();
+
+    if (!clue) {
+      return '?';
+    }
+
+    switch (clue.id) {
+      case '1':
+        return '🦇';
+      case '2':
+        return '🔱';
+      case '3':
+        return '🛩️';
+      case '4':
+        return '🕗';
+      case '5':
+        return '🏴‍☠️';
+      case '6':
+        return '🦁';
+      default:
+        return '?';
+    }
+  }
+
   private setNextQuestion(): void {
     this.question.set(
       this.clue()?.questions?.find((question: QuestionInterface) => !question.answered) ?? null

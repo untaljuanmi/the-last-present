@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col justify-between items-center gap-8 p-8 h-dvh w-dvw bg-indigo-900 overflow-hidden text-white">
+  class="flex flex-col justify-between items-center gap-8 p-8 h-dvh w-dvw overflow-hidden text-white">
   <div class="flex w-full">
     <button
       class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-auto rounded-2xl"
@@ -19,7 +19,7 @@
           @for (option of question()?.options; track option.id) {
             <button
               [disabled]="!!question()?.answer"
-              class="flex justify-center items-center gap-2 text-2xl bg-transparent border-2 transition-all py-4 px-8 rounded-2xl w-full {{
+              class="flex justify-center items-center gap-2 bg-transparent border-2 transition-all py-4 px-8 rounded-2xl w-full {{
                 !!question()?.answer
                   ? option.id === question()?.correctAnswer
                     ? 'text-teal-500 border-teal-500 active:border-teal-700 active:text-teal-700'
@@ -30,7 +30,7 @@
               }}"
               (click)="onClickOption(option)">
               <div class="flex flex-col justify-center items-center flex-1 w-full">
-                <span class="text-2xl">{{ option.answer }}</span>
+                <span class="text-xl">{{ option.answer }}</span>
               </div>
             </button>
           }
@@ -45,6 +45,7 @@
             </div>
           </button>
           <button
+            [disabled]="!question()?.answered"
             class="flex justify-center items-center gap-2 bg-transparent border-2 transition-all py-4 px-8 rounded-2xl w-full text-teal-500 border-teal-500 active:border-teal-700 active:text-teal-700 disabled:text-gray-400 disabled:border-gray-400"
             (click)="onClickGoToNextQuestion()">
             <div class="flex flex-col justify-center items-center flex-1 w-full">
@@ -84,11 +85,67 @@
                 <div class="confetti-piece"></div>
               }
             </div>
-            <div class="flex flex-col justify-center items-center">
-              <img
-                src="/images/clues/{{ clue()!.id }}.png"
-                alt="Pista"
-                class="rounded-xl shadow-xl" />
+            <div
+              class="flex flex-col justify-center items-center p-8 animate-bounce rounded-2xl bg-teal-500 shadow-xl overflow-hidden">
+              <span class="text-3xl z-10 drop-shadow-md">{{ getClue() }}</span>
+              <div
+                class="flex flex-col justify-center items-center flex-1 gap-2 w-full absolute -rotate-45 opacity-50">
+                <div class="flex gap-6 text-xs">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-sm">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-md">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-lg">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-xl">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-2xl">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-xl">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-lg">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-md">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-sm">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+                <div class="flex gap-6 text-xs">
+                  @for (item of [].constructor(20); track $index) {
+                    <span>{{ getEmoji() }}</span>
+                  }
+                </div>
+              </div>
             </div>
           </div>
         } @else {
