@@ -1,11 +1,11 @@
 @if (page() === 1) {
   <div
-    class="flex flex-col justify-between items-center p-8 overflow-hidden text-white w-full h-full">
-    <div class="flex flex-col justify-center items-center gap-8">
-      <h1 class="text-6xl font-bold text-center">El último regalo</h1>
-      <p class="text-2xl text-center">
+    class="flex flex-col justify-between items-center gap-8 p-8 overflow-hidden text-white w-full h-full">
+    <div class="flex flex-col justify-center items-center gap-8 flex-1">
+      <h1 class="text-6xl font-bold text-center mb-4">El último regalo</h1>
+      <p class="text-xl text-center">
         Ya solo queda un regalo por abrir, pero si quieres encontrarlo deberás resolver un pequeño
-        acertijo.
+        acertijo
       </p>
     </div>
 
@@ -32,11 +32,14 @@
 
     <div class="flex flex-col justify-center items-center flex-1 gap-4">
       <p class="text-xl text-center">
-        Si quieres saber dónde se encuentra tu regalo tendrás que adivinar la palabra mágica
+        <span>{{ 'Si quieres saber dónde se encuentra ' }}</span>
+        <span class="text-teal-500 font-semibold">{{ 'tu regalo' }}</span>
+        <span>{{ ' tendrás que adivinar ' }}</span>
+        <span class="text-teal-500 font-semibold">{{ 'la palabra mágica' }}</span>
       </p>
 
       <p class="text-xl text-center">
-        Para ello deberás responder a una serie de preguntas y así conseguir pistas que te ayudarán
+        Para ello, deberás responder a una serie de preguntas y así conseguir pistas que te ayudarán
         a resolver el enigma
       </p>
     </div>
@@ -86,7 +89,7 @@
         ontouchstart=""
         class="flex justify-center items-center gap-2 text-2xl text-teal-500 bg-transparent border-2 border-teal-500 active:border-teal-700 active:text-teal-700 transition-all py-4 px-8 w-full rounded-2xl"
         routerLink="/clues">
-        ¡Pista!
+        Pistas
       </button>
     </div>
   </div>
